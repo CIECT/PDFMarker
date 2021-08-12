@@ -28,7 +28,7 @@ export class MarkTypeIconComponent implements OnInit {
 
   private totalMark: number = undefined;
 
-  private readonly defaultColour: string = "#6F327A";
+  private readonly defaultColour: string = 'rgba(10,26,92,0.8)';
 
   private pageNumber: number;
 
@@ -281,7 +281,7 @@ export class MarkTypeIconComponent implements OnInit {
       componentRef: this.componentReferene
     };
 
-    const handelCommentFN = (formData: any) => {
+    const handleCommentFN = (formData: any) => {
       console.log("Form Data is", formData);
       this.totalMark = formData.totalMark;
       this.sectionLabel = formData.sectionLabel;
@@ -299,6 +299,6 @@ export class MarkTypeIconComponent implements OnInit {
         }
       });
     };
-    this.appService.createDialog(MarkingCommentModalComponent, config, handelCommentFN);
+    this.appService.createDialog(MarkingCommentModalComponent, config, handleCommentFN);
   }
 }

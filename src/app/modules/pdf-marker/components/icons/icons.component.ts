@@ -46,7 +46,7 @@ export class IconsComponent implements OnInit, OnChanges {
 
   selecetedIcon: IconInfo;
 
-  private readonly defaultColour = "#6F327A";
+  private readonly defaultColour = 'rgba(10,26,92,0.8)';
 
   @Input()
   selectedColour: string = this.defaultColour;

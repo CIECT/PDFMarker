@@ -58,7 +58,7 @@ export class AssignmentMarkingComponent implements OnInit, OnDestroy {
   pdfPages: number = 0;
   currentPage: number = 1;
   assignmentSettings: AssignmentSettingsInfo;
-  colour: string = "#6F327A";
+  colour: string = 'rgba(10,26,92,0.8)';
   isSelectedIcon: boolean;
   wheelDirection: string;
   isWheel: boolean;
@@ -275,7 +275,7 @@ export class AssignmentMarkingComponent implements OnInit, OnDestroy {
   }
 
   async saveMarks(marks: any[] = null): Promise<boolean> {
-    const markDetails = (marks) ? marks:this.getMarksToSave();
+    const markDetails = (marks) ? marks: this.getMarksToSave();
     this.appService.isLoading$.next(true);
     return await this.assignmentService.saveMarks(markDetails, this.totalMark).toPromise()
       .then(() => {

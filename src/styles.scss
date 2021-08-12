@@ -63,7 +63,8 @@
 }
 
 /*Variables*/
-$pdf-marker-primary: #6f327a;
+$pdf-marker-primary: rgba(10,26,92,0.8);
+$pdf-marker-secondary: #FFF;
 
 html, body { height: 100%; font-family: Roboto, "Helvetica Neue", sans-serif !important; min-height: 695px; min-height: 650px;}
 body { margin: 0; }
@@ -239,6 +240,10 @@ pdf-marker-file-explorer-modal {
   .mat-checkbox-background, .mat-checkbox-background {
     background: $pdf-marker-primary !important;
   }
+}
+
+.mat-accent .mat-pseudo-checkbox-checked, .mat-accent .mat-pseudo-checkbox-indeterminate, .mat-pseudo-checkbox-checked, .mat-pseudo-checkbox-indeterminate {
+  background: $pdf-marker-primary;
 }
 
 .errorMessages{

@@ -39,7 +39,7 @@ export class AssignmentMarkingRubricComponent implements OnInit, OnDestroy {
 
   currentPage: number = 1;
   assignmentSettings: AssignmentSettingsInfo;
-  colour: string = "#6F327A";
+  colour: string = 'rgba(10,26,92,0.8)';
   wheelDirection: string;
   isWheel: boolean;
   pdfPages: number = 0;
