@@ -1,5 +1,4 @@
-$pdf-marker-primary: rgba(10,26,92,0.8);
-$pdf-marker-secondary: #FFF;
+
 
 mat-toolbar {
   padding-left: 0;
@@ -13,7 +12,7 @@ mat-toolbar {
 
 
   .pdf-marker-icons-svg-class {
-    stroke: $pdf-marker-primary;
+    stroke: var(--pdf-marker-primary);
     stroke-width: 0;
   }
 
