@@ -23,6 +23,7 @@ import {YesAndNoConfirmationDialogComponent} from "@sharedModule/components/yes-
 import {AssignmentSettingsInfo} from "@pdfMarkerModule/info-objects/assignment-settings.info";
 import {FinaliseMarkingComponent} from "@pdfMarkerModule/components/finalise-marking/finalise-marking.component";
 import {MarkingCommentModalComponent} from "@sharedModule/components/marking-comment-modal/marking-comment-modal.component";
+import {SettingsService} from "@pdfMarkerModule/services/settings.service";
 
 @Component({
   selector: 'pdf-marker-assignment-marking',
@@ -31,14 +32,7 @@ import {MarkingCommentModalComponent} from "@sharedModule/components/marking-com
   providers: []
 })
 export class AssignmentMarkingComponent implements OnInit, OnDestroy {
-  constructor(private renderer: Renderer2,
-              private assignmentService: AssignmentService,
-              private el: ElementRef,
-              private dialog: MatDialog,
-              private resolver: ComponentFactoryResolver,
-              private route: ActivatedRoute,
-              private router: Router,
-              private appService: AppService) { }
+
   // @ts-ignore
   @ViewChild('container') container: ElementRef;
 
@@ -58,7 +52,6 @@ export class AssignmentMarkingComponent implements OnInit, OnDestroy {
   pdfPages: number = 0;
   currentPage: number = 1;
   assignmentSettings: AssignmentSettingsInfo;
-  //TODO Colour config
   colour: string = 'rgba(10,26,92,0.8)';
   isSelectedIcon: boolean;
   wheelDirection: string;
@@ -70,6 +63,17 @@ export class AssignmentMarkingComponent implements OnInit, OnDestroy {
   private markDetailsRawData: any[];
   private readonly defaultFullMark = 1;
   private readonly defaultIncorrectMark = 0;
+
+  constructor(private renderer: Renderer2,
+              private assignmentService: AssignmentService,
+              private el: ElementRef,
+              private dialog: MatDialog,
+              private resolver: ComponentFactoryResolver,
+              private route: ActivatedRoute,
+              private router: Router,
+              private appService: AppService,
+              private settingsService: SettingsService) { }
+
 
   ngOnInit() {
     if(this.assignmentService.getSelectedPdfURL() === undefined || this.assignmentService.getSelectedPdfURL() === null){
@@ -93,6 +97,13 @@ export class AssignmentMarkingComponent implements OnInit, OnDestroy {
         this.currentPage = 1;
         this.getAssignmentProgress(true);
       }
+    });
+    this.settingsService.getConfigurations().subscribe(configurations => {
+      if (configurations.defaultColour) {
+        this.colour = configurations.defaultColour;
+      }
+    }, error => {
+      this.appService.isLoading$.next(false);
     });
   }
 

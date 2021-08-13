@@ -598,8 +598,7 @@ const zipFileUploadCallback = (req, res, data) => {
             else if ((oldPath.toLowerCase() + ' (' + (foundCount + 1) + ')' + '/') === folders[i].toLowerCase() + '/')
               foundCount++;
           }
-//TODO read from config
-          const settings: AssignmentSettingsInfo = {defaultColour: 'rgba(10,26,92,0.8)', rubric, isCreated: false};
+          const settings: AssignmentSettingsInfo = {defaultColour: config.defaultColour ? config.defaultColour : 'rgba(10,26,92,0.8)', rubric, isCreated: false};
           if (foundCount !== 0) {
             newFolder = oldPath + ' (' + (foundCount + 1) + ')' + '/';
 
@@ -1981,7 +1980,7 @@ const finalizeAssignment = async (req, res) => {
 
               if (marks.length > 0) {
                 const annotateFN = async (): Promise<{ pdfBytes: Uint8Array, totalMark: number }> => {
-                  return await annotatePdfFile(res, submission, marks);
+                  return await annotatePdfFile(res, submission, marks, config.defaultColour);
                 };
 
                 let fileName = pathinfo(submission, 'PATHINFO_FILENAME');
@@ -2358,7 +2357,7 @@ const getRgbScale = (rgbValue: number): number => {
   return +parseFloat(((rgbValue / 255) + '')).toFixed(2);
 };
 
-const annotatePdfFile = async (res, filePath: string, marks = []) => {
+const annotatePdfFile = async (res, filePath: string, marks = [], defaultColour: string) => {
   let totalMark = 0;
   let generalMarks = 0;
   const sectionMarks: string[] = [];
@@ -2397,8 +2396,7 @@ const annotatePdfFile = async (res, filePath: string, marks = []) => {
   pdfPages.forEach((pdfPage: PDFPage) => {
     if (Array.isArray(marks[pageCount - 1])) {
       marks[pageCount - 1].forEach(mark => {
-        //TODO Read from config default colour
-        let colours = hexRgb('#0A1A5CCC');
+        let colours = defaultColour ? hexRgb(defaultColour) : hexRgb('#0A1A5CCC');
         if (mark.colour.startsWith('#')) {
           colours = hexRgb(mark.colour);
         } else if (mark.colour.startsWith('rgb')) {
@@ -2677,8 +2675,8 @@ const createAssignment = (req, res) => {
 
         if (studentDetails.length !== req.files.length)
           return sendResponse(req, res, 400, `Student details is not equal to number of files sent!`);
-//TODO Colour
-        const settings: AssignmentSettingsInfo = {defaultColour: 'rgba(10,26,92,0.8)', rubric, isCreated: true};
+
+        const settings: AssignmentSettingsInfo = {defaultColour: config.defaultColour ? config.defaultColour : 'rgba(10,26,92,0.8)', rubric, isCreated: true};
 
         let count = 0;
         const headers = `'${assignmentName}','SCORE_GRADE_TYPE'\n`;
