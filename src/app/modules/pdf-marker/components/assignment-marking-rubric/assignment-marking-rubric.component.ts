@@ -8,6 +8,7 @@ import {IRubric} from "@coreModule/utils/rubric.class";
 import {MatDialogConfig} from "@angular/material/dialog";
 import {YesAndNoConfirmationDialogComponent} from "@sharedModule/components/yes-and-no-confirmation-dialog/yes-and-no-confirmation-dialog.component";
 import {RoutesEnum} from "@coreModule/utils/routes.enum";
+import {SettingsService} from "@pdfMarkerModule/services/settings.service";
 
 @Component({
   selector: 'pdf-marker-assignment-marking-rubric',
@@ -39,7 +40,6 @@ export class AssignmentMarkingRubricComponent implements OnInit, OnDestroy {
 
   currentPage: number = 1;
   assignmentSettings: AssignmentSettingsInfo;
-  //TODO colour config
   colour: string = 'rgba(10,26,92,0.8)';
   wheelDirection: string;
   isWheel: boolean;
@@ -60,6 +60,7 @@ export class AssignmentMarkingRubricComponent implements OnInit, OnDestroy {
 
   constructor(private appService: AppService,
               private assignmentService: AssignmentService,
+              private settingsService: SettingsService,
               private router: Router) {
   }
 
@@ -99,6 +100,13 @@ export class AssignmentMarkingRubricComponent implements OnInit, OnDestroy {
           this.router.navigate([RoutesEnum.MARKER]);
         });
       }
+    });
+    this.settingsService.getConfigurations().subscribe(configurations => {
+      if (configurations.defaultColour) {
+        this.colour = configurations.defaultColour;
+      }
+    }, error => {
+      this.appService.isLoading$.next(false);
     });
   }
 
