@@ -27,7 +27,7 @@ export class MarkTypeIconComponent implements OnInit {
   private isDeleted: boolean = false;
 
   private totalMark: number = undefined;
-
+//todo colour config
   private readonly defaultColour: string = 'rgba(10,26,92,0.8)';
 
   private pageNumber: number;

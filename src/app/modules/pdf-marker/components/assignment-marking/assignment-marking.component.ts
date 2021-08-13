@@ -58,6 +58,7 @@ export class AssignmentMarkingComponent implements OnInit, OnDestroy {
   pdfPages: number = 0;
   currentPage: number = 1;
   assignmentSettings: AssignmentSettingsInfo;
+  //TODO Colour config
   colour: string = 'rgba(10,26,92,0.8)';
   isSelectedIcon: boolean;
   wheelDirection: string;

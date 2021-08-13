@@ -1,10 +1,8 @@
-$pdf-marker-primary: rgba(10,26,92,0.8);
-$pdf-marker-secondary: #FFF;
 
 mat-toolbar {
   background: transparent;
-  background-color: $pdf-marker-primary;
-  border-bottom: 3px solid $pdf-marker-secondary;
+  background-color: var(--pdf-marker-primary);
+  border-bottom: 3px solid var(--pdf-marker-secondary);
   height: 99%;
   min-height: 86px;
   .pdf-marker-brand {
@@ -15,7 +13,7 @@ mat-toolbar {
     .pdf-marker-title {
       /*font-family: 'opensans-light', Roboto, "Helvetica Neue", sans-serif;*/
       font-weight: 800;
-      color: $pdf-marker-secondary;
+      color: var(--pdf-marker-secondary);
     }
 
     #pdf-marker-version {
@@ -33,5 +31,5 @@ mat-toolbar {
 }
 
 mat-divider {
-  background: $pdf-marker-primary;
+  background: var(--pdf-marker-primary);
 }
