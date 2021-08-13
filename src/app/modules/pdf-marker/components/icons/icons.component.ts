@@ -4,6 +4,8 @@ import {IconTypeEnum} from "@pdfMarkerModule/info-objects/icon-type.enum";
 import {IconInfo} from "@pdfMarkerModule/info-objects/icon.info";
 import {MatIconRegistry} from "@angular/material/icon";
 import {DomSanitizer} from "@angular/platform-browser";
+import {AppService} from "@coreModule/services/app.service";
+import {SettingsService} from "@pdfMarkerModule/services/settings.service";
 
 export enum KEY_CODE {
   RIGHT_ARROW = 39,
@@ -45,8 +47,8 @@ export class IconsComponent implements OnInit, OnChanges {
   containsRubric: boolean;
 
   selecetedIcon: IconInfo;
-//TODO colour config
-  private readonly defaultColour = 'rgba(10,26,92,0.8)';
+
+  defaultColour = 'rgba(10,26,92,0.8)';
 
   @Input()
   selectedColour: string = this.defaultColour;
@@ -61,7 +63,9 @@ export class IconsComponent implements OnInit, OnChanges {
     { icon: 'comment', type: IconTypeEnum.NUMBER, toolTip: 'Comment and Mark'},
 
   ];
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder,
+              private settingsService: SettingsService,
+              private appService: AppService) {}
  /** constructor(private matIconRegistry: MatIconRegistry, private domSanitizer: DomSanitizer, private fb: FormBuilder) {
     this.matIconRegistry
       .addSvgIcon("halfTick", this.domSanitizer.bypassSecurityTrustResourceUrl("./assets/halftick.svg"))
@@ -72,6 +76,13 @@ export class IconsComponent implements OnInit, OnChanges {
 */
   ngOnInit() {
     this.initForm();
+   this.settingsService.getConfigurations().subscribe(configurations => {
+     if (configurations.defaultColour) {
+       this.colour = configurations.defaultColour;
+     }
+   }, error => {
+     this.appService.isLoading$.next(false);
+   });
   }
 
   private initForm() {
