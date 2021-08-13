@@ -607,7 +607,7 @@ const zipFileUploadCallback = (req, res, data) => {
             else if ((oldPath.toLowerCase() + ' (' + (foundCount + 1) + ')' + '/') === folders[i].toLowerCase() + '/')
               foundCount++;
           }
-
+//TODO read from config
           const settings: AssignmentSettingsInfo = {defaultColour: 'rgba(10,26,92,0.8)', rubric, isCreated: false};
           if (foundCount !== 0) {
             newFolder = oldPath + ' (' + (foundCount + 1) + ')' + '/';
@@ -2406,6 +2406,7 @@ const annotatePdfFile = async (res, filePath: string, marks = []) => {
   pdfPages.forEach((pdfPage: PDFPage) => {
     if (Array.isArray(marks[pageCount - 1])) {
       marks[pageCount - 1].forEach(mark => {
+        //TODO Read from config default colour
         let colours = hexRgb('#0A1A5CCC');
         if (mark.colour.startsWith('#')) {
           colours = hexRgb(mark.colour);
@@ -2685,7 +2686,7 @@ const createAssignment = (req, res) => {
 
         if (studentDetails.length !== req.files.length)
           return sendResponse(req, res, 400, `Student details is not equal to number of files sent!`);
-
+//TODO Colour
         const settings: AssignmentSettingsInfo = {defaultColour: 'rgba(10,26,92,0.8)', rubric, isCreated: true};
 
         let count = 0;
