@@ -28,7 +28,7 @@ export class MarkTypeIconComponent implements OnInit {
 
   private totalMark: number = undefined;
 
-  private readonly defaultColour: string = "#6F327A";
+  private readonly defaultColour: string = 'rgba(10,26,92,0.8)';
 
   private pageNumber: number;
 

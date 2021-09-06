@@ -1,6 +1,8 @@
 .pdf-marker-dropzone {
   cursor: copy;
 }
+$pdf-marker-primary: rgba(10,26,92,0.8);
+$pdf-marker-secondary: #FFF;
 
 .boundary {
   height: 90%;
@@ -17,7 +19,7 @@
 .boundary::-webkit-scrollbar-thumb {
   background: #888;
 }
-$pdf-marker-primary: #6f327a;
+
 
 .pdf-marker-icons-svg-class {
   stroke: $pdf-marker-primary;
