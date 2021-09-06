@@ -97,7 +97,7 @@ try {
     // Some APIs can only be used after this event occurs.
     electron_1.app.on('ready', function () {
         if (process.platform === 'win32') {
-            electron_1.app.setAppUserModelId('za.ac.nwu.PDF-Marker'); // set appId from package.json or electron-builder.yml?
+            electron_1.app.setAppUserModelId('za.ac.uwc.PDF-Marker'); // set appId from package.json or electron-builder.yml?
         }
         createWindow();
         mainWindow.webContents.on('did-finish-load', function () {
