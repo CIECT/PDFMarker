@@ -16,7 +16,6 @@ import {MarkTypeIconComponent} from "@pdfMarkerModule/components/mark-type-icon/
 import {AssignmentMarkingComponent} from "@pdfMarkerModule/components/assignment-marking/assignment-marking.component";
 import {FinaliseMarkingComponent} from './components/finalise-marking/finalise-marking.component';
 import {CreateAssignmentComponent} from './components/create-assignment/create-assignment.component';
-import {CreateFolderComponent} from './components/create-folder/create-folder.component';
 
 import {PdfJsViewerModule} from 'ng2-pdfjs-viewer';
 import {ColorPickerModule} from "ngx-color-picker";
@@ -29,6 +28,7 @@ import {AssignmentMarkingRubricComponent} from './components/assignment-marking-
 import {AssignmentWorkspaceOverviewComponent} from './components/assignment-workspace-overview/assignment-workspace-overview.component';
 import {GenericCommentsComponent} from './components/comments/comments.component';
 import {AssignmentWorkspaceManageModalComponent} from './components/assignment-workspace-manage-modal/assignment-workspace-manage-modal.component';
+import { WorkingFolderComponent } from './components/working-folder/working-folder.component';
 
 
 @NgModule({
@@ -39,7 +39,6 @@ import {AssignmentWorkspaceManageModalComponent} from './components/assignment-w
     AssignmentWorkspaceManageModalComponent,
     AssignmentWorkspaceOverviewComponent,
     CreateAssignmentComponent,
-    CreateFolderComponent,
     FinaliseMarkingComponent,
     GenericCommentsComponent,
     HomeComponent,
@@ -48,7 +47,8 @@ import {AssignmentWorkspaceManageModalComponent} from './components/assignment-w
     MarkTypeIconComponent,
     RubricImportComponent,
     SettingsComponent,
-    WelcomeComponent
+    WelcomeComponent,
+    WorkingFolderComponent
   ],
   imports: [
     CommonModule,
