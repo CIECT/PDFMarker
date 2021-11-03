@@ -3,7 +3,8 @@
     <ng-template matMenuContent>
 
       <ng-container *ngFor="let menuItem of menuItems">
-        <a [routerLink]="menuItem.href"  mat-menu-item><mat-icon class="setting-icon">{{ menuItem.icon }}</mat-icon>{{ menuItem.title }}</a>
+        <a [routerLink]="menuItem.href" mat-menu-item><mat-icon [style.color]="primaryColour">{{ menuItem.icon }}</mat-icon>
+          {{ menuItem.title }}</a>
       </ng-container>
 
     </ng-template>

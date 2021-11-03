@@ -1,13 +1,10 @@
-$pdf-marker-primary: rgba(10,26,92,0.8);
-$pdf-marker-secondary: #FFF;
-
 pdf-marker-menu {
   color: #888;
 }
 
 .mat-icon {
-  color: $pdf-marker-secondary !important;
+  color: var(--pdf-marker-secondary);
 }
 .setting-icon {
-  color: $pdf-marker-primary !important;
+  color: var(--pdf-marker-primary);
 }
