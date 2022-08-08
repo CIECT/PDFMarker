@@ -1,0 +1,25 @@
+mat-toolbar {
+  background: transparent;
+  height: 99%;
+  min-height: 64px;
+  .pdf-marker-brand {
+    margin-left: 16px;
+    cursor: pointer;
+
+    .pdf-marker-title {
+      font-weight: 800;
+    }
+
+    .pdf-marker-version {
+      font-size: 10px;
+      font-weight: normal;
+      position: absolute;
+      top: 2.1rem;
+    }
+
+    img {
+      width: 140px;
+      margin-left: -3px;
+    }
+  }
+}
