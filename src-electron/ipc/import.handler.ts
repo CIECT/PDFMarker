@@ -80,7 +80,7 @@ export function importZip(event: IpcMainInvokeEvent,  req: ImportInfo): Promise<
           let newFolder = '';
 
           // Default settings for the new assignment
-          const settings: AssignmentSettingsInfo = {defaultColour: '#6f327a', rubric: rubrics[rubricIndex], isCreated: false};
+          const settings: AssignmentSettingsInfo = {defaultColour: '#3b487d', rubric: rubrics[rubricIndex], isCreated: false};
 
           // By default the zip wil contain the name of the assignment directory
           let assignmentDirectoryName = oldPath;

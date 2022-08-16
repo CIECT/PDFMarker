@@ -652,7 +652,7 @@ export function createAssignment(event: IpcMainInvokeEvent, createInfo: CreateAs
         return Promise.reject(`Student details is not equal to number of files sent!`);
       }
 
-      const settings: AssignmentSettingsInfo = {defaultColour: '#6F327A', rubric, isCreated: true};
+      const settings: AssignmentSettingsInfo = {defaultColour: '#3b487d', rubric, isCreated: true};
 
       let count = 0;
       const headers = `'${assignmentName}','SCORE_GRADE_TYPE'\n`;

@@ -237,7 +237,7 @@ function addPdfMarks(session: AnnotationSession, marks: MarkInfo[][]): Promise<A
           }
 
           let coords = transform(mark.coordinates);
-          let colours: RgbaObject = hexRgb('#6F327A');
+          let colours: RgbaObject = hexRgb('#3b487d');
           if (mark.colour.startsWith('#')) {
             colours = hexRgb(mark.colour);
           } else if (mark.colour.startsWith('rgb')) {

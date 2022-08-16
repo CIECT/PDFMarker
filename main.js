@@ -939,7 +939,7 @@ function createAssignment(event, createInfo) {
             if (studentDetails.length !== createInfo.files.length) {
                 return Promise.reject(`Student details is not equal to number of files sent!`);
             }
-            const settings = { defaultColour: '#6F327A', rubric, isCreated: true };
+            const settings = { defaultColour: '#3b487d', rubric, isCreated: true };
             let count = 0;
             const headers = `'${assignmentName}','SCORE_GRADE_TYPE'\n`;
             const line = `''\n`;
@@ -1634,7 +1634,7 @@ function importZip(event, req) {
                 }
                 let newFolder = '';
                 // Default settings for the new assignment
-                const settings = { defaultColour: '#6f327a', rubric: rubrics[rubricIndex], isCreated: false };
+                const settings = { defaultColour: '#3b487d', rubric: rubrics[rubricIndex], isCreated: false };
                 // By default the zip wil contain the name of the assignment directory
                 let assignmentDirectoryName = oldPath;
                 let renameOld = '';
@@ -2459,7 +2459,7 @@ function addPdfMarks(session, marks) {
                         return;
                     }
                     let coords = transform(mark.coordinates);
-                    let colours = (0, pdf_utils_1.hexRgb)('#6F327A');
+                    let colours = (0, pdf_utils_1.hexRgb)('#3b487d');
                     if (mark.colour.startsWith('#')) {
                         colours = (0, pdf_utils_1.hexRgb)(mark.colour);
                     }
